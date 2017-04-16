@@ -158,16 +158,26 @@ namespace DeployApplication.Controllers
 
         
         [HttpPost]
-        public ActionResult EditProduct(Product product)
+        public ActionResult EditProduct(Product product, HttpPostedFileBase uploadFile)
         {
             var changedProduct = db.Products.Single(p => p.Id == product.Id);
+
+           if (uploadFile.ContentLength > 0 || uploadFile != null)
+                {
+                    var fileName = Path.GetFileName(uploadFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Resources/Images"), fileName);
+                    uploadFile.SaveAs(path);
+
+                    string displayPath = "~/Resources/Images/" + fileName;
+
+                    changedProduct.PictureFileName = displayPath;
+                }
+            
 
             changedProduct.Name = product.Name;
             changedProduct.Description = product.Description;
             changedProduct.Price = product.Price;
             db.SaveChanges();
-           
-
 
             return RedirectToAction("Index", "Home");
         }
