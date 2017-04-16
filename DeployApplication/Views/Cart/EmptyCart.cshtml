@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "EmptyCart";
+}
+
+<h2>EmptyCart</h2>
+
+
+<div class="panel panel-info col-md-6">
+    <div class="panel-heading">
+        <b>Twój koszyk jest pusty</b>
+    </div>
+    <div class="panel-body">
+        <p>Wróć do strony głównej i dodaj produkty do koszyka</p>
+        @Html.ActionLink("Kliknij", "Index", "Home")
+    </div>
+</div>

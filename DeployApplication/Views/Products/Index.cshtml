@@ -1,0 +1,28 @@
+﻿@model DeployApplication.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista produktów:</h2>
+@Html.Label("Wszystkie produkty znajdujące się w ofercie sklepu: ")
+<br />
+@foreach (var p in Model.allProducts)
+{
+    <div class="row col-md-8 product-panel">
+        <div class="col-md-4 product-image"> 
+            <img src="@Url.Content(@p.PictureFileName ?? "~/Resources/Images/no-picture.png" )" 
+                 alt="no photo" style="margin-top: 20px;"  />
+        </div>
+            <div class="col-md-4" >
+            <b>@p.Name</b>
+            <br />
+            @p.Description
+            <br />
+            <br />
+            @Html.ActionLink("Dodaj do koszyka", "AddToDbCart",
+            "Products", new { productId = p.Id }, null)
+            </div>
+        </div>        
+}
+

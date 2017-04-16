@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Aplikacja Cart Shop</h2>
+
+
+<div class="row">
+    <div id="products-content" class="col-md-8">
+       
+        <div class="text-center" style="margin: 30px"><h4>Produkty znajdujace się w sklepie:</h4></div>        
+        <div id="products-list" class="row col-md-12">
+            @{
+                Html.RenderAction("ShowProducts", "Products");
+            }
+
+        </div>
+    </div>
+    <div class="col-md-4">
+
+        @{
+            Html.RenderAction("ShowCartMiniPanel", "Cart");
+        }
+
+    </div>
+</div>

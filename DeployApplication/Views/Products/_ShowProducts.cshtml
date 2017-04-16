@@ -1,0 +1,31 @@
+﻿@model  DeployApplication.ViewModels.ProductsViewModel
+@using PagedList;
+@using PagedList.Mvc;
+
+
+<div class="row" style="margin: 0 auto;">
+    @foreach (var product in @Model.PagedProductsList)
+    {
+        <div id="product-thumbnail" class="col-md-4 center-block">  
+            
+
+            <div style="margin: 5px; border-radius: 5px; padding: 5px; 
+                min-height: 150px; background-color:#daedef">
+                <b>@product.Name</b> 
+                <br />
+                <br />
+                <img src="@Url.Content(@product.PictureFileName ?? "~/Resources/Images/no-picture.png" )" alt="no photo" />
+                <br />
+                <br />
+                @product.Description
+                <br />
+                <br />
+                
+                @Html.ActionLink("Dodaj do koszyka", "AddToDbCart",
+                    "Products", new { productId = product.Id }, new { @class = "btn btn-primary btn-sm" })
+            </div>
+        </div>
+    }
+    <div class="text-center">@Html.PagedListPager(@Model.PagedProductsList, page => Url.Action("Index", "Home", new { page}))</div>
+   
+</div>

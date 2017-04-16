@@ -1,0 +1,74 @@
+﻿body {
+    /*background: url('../Resources/LayoutImg/background.jpg');*/  
+    background-image: linear-gradient(180deg, #8ebcd9, #e0eaf0); 
+    min-height: 1200px;
+}
+
+.navbar-brand { color: black !important }
+.navbar-brand:visited { color: black !important }
+.navbar-default-color { color: black !important }
+
+.navbar-inverse { 
+    background-color: #a8cee4 !important; 
+    color : #FFFFFF !important
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #bf2121;
+}
+
+.text-centered{
+    text-align: center;
+}
+
+#mini-cart-panel{
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #e6f3fb;
+}
+
+#products-content{
+    border-radius: 25px;
+    background-color: #c0e1ef   !important;
+}
+
+#products-list{
+    margin: 5px auto;
+    border-radius: 25px;
+    background-color: #dff3f6;
+}
+
+.product-panel{
+    border: 1px solid; 
+    border-radius: 25px; 
+    padding: 10px;  
+    background-color: #c7c7c7;
+    margin: 5px;
+}
+
+.product-image{
+    padding: 5px 30px 50px 80px; 
+    border-radius: 20px; 
+    background-color: #a5b39f;
+}
+
+#product-thumbnail{
+    margin: 0px auto;
+    min-height: 150px;
+    padding: 5px; 
+    text-align:center;
+}
+
+.product-thumbnail-button{
+    
+}
+
+a.product-thumbnail-button {
+    color:white;
+    text-decoration: none;
+}
+
+footer{
+    color: aquamarine;
+}
+

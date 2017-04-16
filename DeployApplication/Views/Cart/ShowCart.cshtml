@@ -1,0 +1,45 @@
+﻿
+@model DeployApplication.ViewModels.CartViewModel
+@using PagedList;
+@using PagedList.Mvc;
+@using Microsoft.AspNet.Identity;
+
+<div class="row col-md-12" style="margin: 5px;">
+
+    <h3>Koszyk zawiera łącznie: @Model.itemsInCart przedmioty(ów)</h3>
+    <br />
+    <p><b>Wartość koszyka to: @Model.cartTotal</b></p>
+    <b>Lista przedmiotów znajdujących się w koszyku: </b>
+</div>
+@foreach (var product in @Model.chosenProductsList)
+{
+    <div id="cart-products-row" class="row col-md-8 product-panel">
+        <div class="col-md-4 product-image">
+            <img src="@Url.Content(@product.PictureFileName ?? "~/Resources/Images/no-picture.png" )"
+                 alt="no photo" style="margin-top: 20px;" />
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(p => product.Name)
+            @Html.DisplayFor(p => product.Name)
+            <br />
+            @Html.LabelFor(p => product.Description)
+            @Html.DisplayFor(p => product.Description)
+            <br />
+            @Html.LabelFor(p => product.Price)
+            @Html.DisplayFor(p => product.Price)
+        </div>
+        <br />
+        
+        @Html.ActionLink("Usuń Produkt", "RemoveProductFromCart",
+            "Products", new
+            {
+                productId = product.Id
+            }, null)
+    </div>
+
+}
+<br />
+
+<br />
+
+

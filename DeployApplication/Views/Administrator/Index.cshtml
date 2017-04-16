@@ -1,0 +1,62 @@
+﻿@model DeployApplication.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Panel Administratora </h2>
+
+
+<div id="" class="row col-md-8">
+
+    @using (Html.BeginForm("Add", "Products", FormMethod.Post,
+         new { enctype = "multipart/form-data" }))
+    {
+        @Html.Label("Dodaj nowy produkt do bazy danych: ")
+        <br />
+        <table>
+            <tr>
+                <td>@Html.Label("Nazwa produktu: ")</td>
+                <td>@Html.TextBoxFor(p => p.product.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Opis produktu: ")</td>
+                <td>@Html.TextAreaFor(p => p.product.Description)</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Dodaj obrazek: ")</td>
+                <td><input type="file" name="uploadFile" id="uploadFile" /></td>                
+            </tr>
+            <tr>
+                <td>@Html.Label("Cena produktu: ")</td>
+                <td>@Html.TextBoxFor(p => p.product.Price)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Wyślij" />
+    }
+    <br />
+    @Html.Label("Wszystkie produkty:")
+    <br />
+</div>
+    @foreach (var p in Model.allProducts)
+    {
+        <div id="cart-products-row" class="row col-md-8 product-panel" style="margin:5px;">
+            <div class="col-md-4 product-image">
+                <img src="@Url.Content(@p.PictureFileName ?? "~/Resources/Images/no-picture.png" )"
+                     alt="no photo" style="margin-top: 20px;" />
+            </div>
+            <div class="col-md-7">
+                @p.Name
+                <br />
+                @p.Description
+                <br />
+                <br />
+                
+                @Html.ActionLink("Edytuj Produkt", "EditProduct",
+            "Products", new { productId = p.Id }, null)
+                |
+                @Html.ActionLink("Usuń Produkt", "RemoveProductFromDb",
+            "Products", new { productId = p.Id }, null)
+            </div>
+        </div>
+    }

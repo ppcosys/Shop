@@ -1,0 +1,13 @@
+﻿@model DeployApplication.ViewModels.CartViewModel
+@using PagedList;
+@using PagedList.Mvc;
+
+<div id="mini-cart-panel" class="">   
+    <p><b>Stan koszyka:</b></p>
+    Koszyk zawiera łącznie: @Model.itemsInCart przedmiotów
+    <br />
+    Wartość koszyka to: @Model.cartTotal
+    <br />
+    @Html.ActionLink("Zobacz szczegóły", "ShowCart", "Cart",
+         new { @class = "btn btn-primary btn-sm" })
+</div>

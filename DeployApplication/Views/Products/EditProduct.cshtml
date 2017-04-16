@@ -1,0 +1,38 @@
+﻿@model DeployApplication.Models.Product
+
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+<h2>Edycja danych produktu</h2>
+<br />
+@using (Html.BeginForm("EditProduct", "Products", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.Label("Zmień dane produktu: ")
+    <br />
+    @Html.LabelFor(p=>p.Name)
+    @Html.EditorFor(p => p.Name)
+    <br />
+    @Html.LabelFor(p => p.Description)
+    @Html.TextAreaFor(p => p.Description)
+    <br />
+    @Html.LabelFor(p => p.Price)
+    @Html.EditorFor(p => p.Price)
+    <br />
+    <input type="submit" value="Zmień" />
+}
+<br />
+
+@if (TempData["Message"] != null)
+{
+    <span style="color:red">@TempData["Message"].ToString()</span>
+}
+
+<form action="AddProductPicture" method="post" enctype="multipart/form-data">
+    <label for="file1">Dodaj zdjęcie:</label> 
+    @Html.HiddenFor(model => model.Id)
+    <input type="file" name="uploadFile" id="uploadFile" />
+    <input type="submit" value="Wyślij"/>
+</form>
