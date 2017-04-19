@@ -12,4 +12,4 @@ live demo: http://www.default.dostrony.pl
     MSSQL 2012
 
 Kod projektu jest działający, gotowy do ściągnięcia w przypadku problemów należy usunąć plik insights z solucji 
-i podłączyć connection string jaki obsługuje Twoja wersja Visual Studio. Samochody można dodawać z panelu administratora.
+i podłączyć connection string jaki obsługuje Twoja wersja Visual Studio. Produkty można dodawać z panelu administratora.
