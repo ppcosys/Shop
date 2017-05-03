@@ -19,8 +19,6 @@ namespace DeployApplication.Controllers
 
         HttpContext _currentHttpContext = System.Web.HttpContext.Current;
 
-        
-
         // GET: Cart
         public ActionResult Index()
         {
@@ -145,13 +143,8 @@ namespace DeployApplication.Controllers
                 sessionId).Select(p => p.ProductId).ToList();
             }
 
-            
 
             List<Product> wybraneProdukty = new List<Product>();
-
-            
-
-
 
             foreach (var item in listaIdProduktow)
             {

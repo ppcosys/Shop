@@ -26,7 +26,6 @@ namespace DeployApplication.Controllers
             ProductsViewModel vm = new ProductsViewModel();
             vm.allProducts = produkty;
             
-
             return View(vm);
         }
        
@@ -38,8 +37,6 @@ namespace DeployApplication.Controllers
             {
                 if (uploadFile == null)
                 {
-
-
                     TempData["Message"] = "Nie wybrano obrazka produktu!";
 
                     return RedirectToAction("Index", "Administrator");
@@ -67,17 +64,14 @@ namespace DeployApplication.Controllers
             db.Products.Add(addedProduct);
             db.SaveChanges();
 
-
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public ActionResult AddProductPicture(Product product, HttpPostedFileBase uploadFile)
         {
-
             if (uploadFile == null)
             {
-                
                 TempData["Message"] = "Nie wybrano obrazka produktu!";
 
                 return RedirectToAction("EditProduct", "Products", new { productId = product.Id });
@@ -89,8 +83,6 @@ namespace DeployApplication.Controllers
                 uploadFile.SaveAs(path);
 
                 string displayPath = "~/Resources/Images/" + fileName;
-
-
 
                 var chosenProduct = db.Products.FirstOrDefault(p => p.Id == product.Id);
                 chosenProduct.PictureFileName = displayPath;
@@ -108,8 +100,7 @@ namespace DeployApplication.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                userId = User.Identity.GetUserId().ToString();
-                
+                userId = User.Identity.GetUserId().ToString();                
             }
 
             Cart record = new Cart();
@@ -118,7 +109,6 @@ namespace DeployApplication.Controllers
             record.ProductPrice = selectedProduct.Price;
             record.UserId = userId;
             
-
             db.Carts.Add(record);
             db.SaveChanges();
 
@@ -141,7 +131,6 @@ namespace DeployApplication.Controllers
                 throw ex;
             }
             
-
             return PartialView("_ShowProducts", vm);
         }
 
@@ -173,7 +162,6 @@ namespace DeployApplication.Controllers
                     changedProduct.PictureFileName = displayPath;
                 }
             
-
             changedProduct.Name = product.Name;
             changedProduct.Description = product.Description;
             changedProduct.Price = product.Price;
@@ -221,9 +209,6 @@ namespace DeployApplication.Controllers
                 return Content("Wystąpił nieoczekiwany błąd");
             }
                 
-
-                
-
             return RedirectToAction("ShowCart", "Cart");
         }
 

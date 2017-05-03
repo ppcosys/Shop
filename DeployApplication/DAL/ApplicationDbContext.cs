@@ -11,10 +11,6 @@ namespace DeployApplication.DAL
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-
-
-
-
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Product> Products { get; set; }
 
@@ -27,9 +23,6 @@ namespace DeployApplication.DAL
         {
             return new ApplicationDbContext();
         }
-
-
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

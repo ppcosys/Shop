@@ -38,11 +38,5 @@ namespace DeployApplication.Controllers
 
             return View();
         }
-
-
-        
-
-        
-
     }
 }

@@ -19,14 +19,5 @@ namespace DeployApplication.Models
         public string SessionId { get; set; }
         public string UserId { get; set; }
 
-        //TESTY
-        public string GetCartId(HttpContext httpContext)
-        {
-
-            Cart cart = new Cart();
-            cart = db.Carts.FirstOrDefault(c => cart.SessionId == httpContext.Session.SessionID.ToString());
-             string id = cart.SessionId ;
-            return id;
-        }
     }
 }
